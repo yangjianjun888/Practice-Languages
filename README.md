@@ -6,3 +6,8 @@ Practice languages
 Start from year 2018
 
 # commit history
+
+# Languages to learn in plan
+Web programming:
+Javascript
+HTML5
