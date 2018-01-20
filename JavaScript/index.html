@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <script language="JavaScript">    
+    //JavaScript调用dll的公用方法  
+    //appName dll组件名（dll文件名） +　dll文件类名  
+    //methodName dll类中的方法名  
+    function run_dll(appName, methodName){  
+      window.oldOnError = window.onerror;  
+      window._command = appName;  
+      window.onerror = function(err) {  
+        if (err.indexOf('Automation') != -1) {  
+          //alert('执行' + window._command + '过程中\n\r\n\r无法找到路径或被您禁止运行本地文件！');  
+          alert('You need to download plugin');  
+          window.open('http://www.baidu.com/');  
+          return true;  
+        } else {  
+          return false;  
+        }  
+      };  
+      var obj = new ActiveXObject(appName);// dll组件名 +　dll文件类名  
+      var result = obj[methodName]();  //dll类中的方法名  
+      alert(result);   
+    }  
+    </script>  
+    <button onclick="run_dll('pubStream.pubCore','onGetVersion')">Test call dll from javascript</button>  
+</body>
+
+</html>
